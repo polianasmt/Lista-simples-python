@@ -1,11 +1,3 @@
-"""
-Faça uma lista de compras
-O usuario deve ter a possibilidade de inserir, apagar
-e listar os valores de sua lista.
-Não permita que o programa quebre com erros de
-índices inexistentes na lista
-
-"""
 import os
 
 lista = []
@@ -25,7 +17,7 @@ while(True):
     try: 
         if opcao == 1:
             os.system('cls')
-            valor = input("Valor: ")
+            valor = input("Item: ")
             lista.append(valor)
             continue
 
@@ -50,14 +42,7 @@ while(True):
                 print(indice, nome)
 
         if opcao == 4:
-            os.system('cls')
-            
-            pesquisa = int(input("Insira o indice de pesquisa: "))
-            lista_enumerada = enumerate(lista)
-
-            if pesquisa in lista_enumerada:
-                pesquisa = lista_enumerada
-                print(pesquisa)
+            ...
 
     except:
         print("Erro ao executar. . .")
