@@ -28,8 +28,6 @@ while(True):
                 print(indice, nome)
 
             excluir = int(input("Insira o indice para excluir: "))
-
-            lista_enumerada = enumerate(lista)
             del lista[excluir]
 
             print("\nElemento '{}', excluído com sucesso. ".format(excluir))
