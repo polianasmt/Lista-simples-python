@@ -42,5 +42,8 @@ while(True):
         if opcao == 4:
             ...
 
+        else:
+            break
+
     except:
         print("Erro ao executar. . .")
