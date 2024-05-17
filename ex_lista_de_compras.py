@@ -5,45 +5,93 @@ lista = []
 while(True):
     
     print("\n")
-    print("\tMenu\n")
-    print("\t1- Inserir\n")
-    print("\t2- Apagar item\n")
-    print("\t3- Listar\n")
-    print("\t4- Busca por indice\n")
-    print("\t5- Sair\n")
-    opcao = int(input("Escolha: "))
+    print("\tMenu", '-' * 10)
+    print("\t[1]- Inserir\n")
+    print("\t[2]- Apagar item\n")
+    print("\t[3]- Listar\n")
+    print("\t[4]- Editar item\n")
+    print("\t[5]- Sair\n")
+    opcao = input("Escolha: ").strip()
     print("\n")
 
     try: 
-        if opcao == 1:
+        if opcao == '1':
             os.system('cls')
-            valor = input("Item: ")
+            valor = input("Item: ").strip()
             lista.append(valor)
+            print("\nO item '{}' foi adicionado com sucesso.".format(valor))
             continue
 
-        if opcao == 2:
+        if opcao == '2':
             os.system('cls')
 
+            print("-"*50)
+            print('\t', 'Indice','\t', 'Item', '\n')
+            print("-"*50)
+
+            for indice, nome in enumerate(lista, 1):
+                print('\t', indice, '\t\t', nome, '\n')
+
+            print("\n")
+            excluir = int(input("Insira o indice para excluir: ").strip())
+
+            if excluir < 0 or excluir > len(lista):
+                print("\nIndice invalido. \n")
+                continue
+             
+            print("\n")
+            confirmacao = input("Tem certeza que deseja excluir o item '{}' da lista? \n[S]im\n[N]ão \n\nEscolha: ".format(lista[excluir -1])).strip().upper()
+            
+
+            if confirmacao == 'S':
+                del lista[excluir -1]
+                print("\nO elemento '{}' foi excluído com sucesso. ".format(excluir))
+                continue
+
+            else: 
+                print("\nExclusão cancelada.")
+                continue
+
+        if opcao == '3':
+            os.system('cls')
+            print("-"*50)
+            print('\t', 'Indice','\t', 'Item', '\n')
+            print("-"*50)
+
             for indice, nome in enumerate(lista):
-                print(indice, nome)
-
-            excluir = int(input("Insira o indice para excluir: "))
-            del lista[excluir]
-
-            print("\nElemento '{}', excluído com sucesso. ".format(excluir))
-
+                print('\t', indice, '\t\t', nome, '\n')
+                
             continue
+        
+        if opcao == '4':
 
-        if opcao == 3:
             os.system('cls')
-            for indice, nome in enumerate(lista):
-                print(indice, nome)
 
-        if opcao == 4:
-            ...
+            print("-"*50)
+            print('\t', 'Indice','\t', 'Item', '\n')
+            print("-"*50)
+
+            for indice, nome in enumerate(lista, 1):
+                print('\t', indice, '\t\t', nome, '\n')
+
+            print("\n")
+            editar = int(input("Insira o indice do item para editar: ").strip())
+
+            if editar < 0 or editar > len(lista):
+                print("\nIndice invalido. \n")
+                continue
+
+            else:
+                item_antigo = lista[editar - 1]
+                novo_item = input("\nDigite o novo item: ")
+                lista[editar -1] = novo_item
+                print("\nO item '{}' foi editado com sucesso para '{}'.".format(item_antigo, novo_item))
+                continue
 
         else:
             break
 
     except:
-        print("Erro ao executar. . .")
+        os.system('cls')
+        print("\nErro ao executar. . .")
+        continue
